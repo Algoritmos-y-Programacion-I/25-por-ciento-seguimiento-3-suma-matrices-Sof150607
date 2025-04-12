@@ -17,8 +17,31 @@ public class Controller {
      * @post Se crea una instancia de Controller 
      */
     public Controller() {
-        matriz1 = new MatrizNumerica(2,2);
-        matriz2 = new MatrizNumerica(2,2);
+        
+    }
+
+    public void inicializarMatrices (int nColumnas, int nFilas){
+
+        matriz1 = new MatrizNumerica(nFilas, nColumnas);
+        matriz2 = new MatrizNumerica(nFilas, nColumnas);
+
+    }
+    
+
+    public MatrizNumerica suma(){
+        int filas = matriz1.getMatriz().length;
+        int columnas = matriz1.getMatriz()[0].length;
+
+        MatrizNumerica sumas = new MatrizNumerica(filas, columnas); //matriz para almacenar las sumas
+
+        for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            int suma = matriz1.getMatriz()[i][j] + matriz2.getMatriz()[i][j];
+            sumas.insertarValor(i, j, suma);
+        }
+    }
+
+    return sumas;  
     }
 
     public void inicialiceSala() {

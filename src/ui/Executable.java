@@ -2,6 +2,7 @@ package ui;
 
 import java.util.Scanner; // Importar Scanner
 import model.Controller;
+import model.MatrizNumerica;
 
 
 public class Executable {
@@ -35,22 +36,66 @@ public class Executable {
 
     public void run() {
 
-        System.out.println("Inserte los numeros de la matriz 1: ");
-        for(int i = 0; i < 2; i++) {
-            for(int j = 0; j < 2; j++) {
+
+
+        System.out.println("Inserte el número de filas de la matriz : ");
+        int nFilas = escaner.nextInt();
+        escaner.nextLine();
+
+        System.out.println("Inserte el número de columnas de la matriz : ");
+        int nColumnas = escaner.nextInt();
+        escaner.nextLine();
+
+        cont.inicializarMatrices(nColumnas, nFilas);
+
+    
+        System.out.println("Inserte los valores de la matriz #1 : ");
+        for(int i = 0; i < nFilas; i++) {
+            for(int j = 0; j < nColumnas; j++) {
                 System.out.println("Insertar dato en fila " + i + " y columna " + j + " : ");
                 int valor = escaner.nextInt();
                 escaner.nextLine();
                 cont.getMatriz1().insertarValor(i, j, valor);
             }
         }
+
+        System.out.println("Inserte los valores de la matriz #2 : ");
+        for(int i = 0; i < nFilas; i++) {
+            for(int j = 0; j < nColumnas; j++) {
+                System.out.println("Insertar dato en fila " + i + " y columna " + j + " : ");
+                int valor = escaner.nextInt();
+                escaner.nextLine();
+                cont.getMatriz2().insertarValor(i, j, valor);
+            }
+        }
     
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 2; j++) {
+        System.out.println("Matriz 1: ");
+        for (int i = 0; i < nFilas; i++){
+            for (int j = 0; j < nColumnas; j++){
                 System.out.print(cont.getMatriz1().getMatriz()[i][j] + " ");
             }
             System.out.println();
+
         }
+        
+        System.out.println("Matriz 2: ");
+        for (int i = 0; i < nFilas; i++){
+            for (int j = 0; j < nColumnas; j++){
+                System.out.print(cont.getMatriz2().getMatriz()[i][j] + " ");
+            }
+            System.out.println();
+
+        }
+
+        MatrizNumerica matrizSuma = cont.suma();
+        System.out.println("Resultado :");
+        for (int i = 0; i < nFilas; i++) {
+            for (int j = 0; j < nColumnas; j++) {
+                System.out.print(matrizSuma.getMatriz()[i][j] + " ");
+            }
+            System.out.println();
+        }
+
 
     }
 
